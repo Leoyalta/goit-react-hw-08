@@ -1,0 +1,20 @@
+.menuContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px;
+}
+.btnLogout {
+  padding: 8px 12px;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #282c34;
+  font-weight: bold;
+}
+
+.btnLogout {
+  background-color: #21a1f1;
+}
