@@ -19,12 +19,7 @@ export const register = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
-      if (error.response?.data?.code === 11000) {
-        return thunkAPI.rejectWithValue("This email is already registered.");
-      }
-      return thunkAPI.rejectWithValue(
-        error.response?.data?.message || "Registration failed."
-      );
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -58,6 +53,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
+    console.log("Refresh user");
     const { auth } = thunkAPI.getState();
     setAuthHeader(auth.token);
 
@@ -75,7 +71,7 @@ export const refreshUser = createAsyncThunk(
   {
     condition: (_, thunkAPI) => {
       const { auth } = thunkAPI.getState();
-
+      console.log("Condition!");
       return auth.token !== null;
     },
   }
